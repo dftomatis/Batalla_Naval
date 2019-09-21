@@ -21,35 +21,37 @@ namespace Capa_Presentacion
             public Form_Tablero()
         {
             InitializeComponent();
-            Cargar_Grilla(100,100);
+            Cargar_Grilla(30, 30, dataGridView_Tablero_1);
+            Cargar_Grilla(30, 30, dataGridView_Tablero_2);
         }
 
-        private void Cargar_Grilla(int filas, int columnas)
+        private void Cargar_Grilla(int filas, int columnas, DataGridView tablero)
         {
             Tablero t = new Tablero();
             int[,] vector = new int[filas, columnas];
             vector = t.Cargar(filas, columnas);
+            DataGridView panel = tablero;
              
 
             for (int i = 0; i < columnas; i++)
             {
-                dataGridView_Tablero_1.Columns.Add(i.ToString(), i.ToString());
+                panel.Columns.Add(i.ToString(), i.ToString());
             }
             
              for (int i = 0; i < filas; i++)
              {
-                 int n = dataGridView_Tablero_1.Rows.Add();
+                 int n = panel.Rows.Add();
                  
        
                  for (int j = 0; j < columnas; j++)
                  {
                     if (vector[i, j] == 1)
                     {
-                        dataGridView_Tablero_1.Rows[i].Cells[j].Style.BackColor = Color.Black;
+                        panel.Rows[i].Cells[j].Style.BackColor = Color.Brown;
                     }
                     else
                     {
-                        dataGridView_Tablero_1.Rows[i].Cells[j].Style.BackColor = Color.Blue;
+                        panel.Rows[i].Cells[j].Style.BackColor = Color.Aquamarine;
 
                     }
                  }
@@ -59,6 +61,16 @@ namespace Capa_Presentacion
         }
 
 
+
+        }
+
+        private void Form_Tablero_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataGridView_Tablero_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
