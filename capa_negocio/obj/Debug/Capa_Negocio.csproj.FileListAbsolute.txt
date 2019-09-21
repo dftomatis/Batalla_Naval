@@ -1,0 +1,6 @@
+C:\Users\Dario\source\c#\Batalla_Naval\Capa_Negocio\bin\Debug\Capa_Negocio.dll
+C:\Users\Dario\source\c#\Batalla_Naval\Capa_Negocio\bin\Debug\Capa_Negocio.pdb
+C:\Users\Dario\source\c#\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.csprojAssemblyReference.cache
+C:\Users\Dario\source\c#\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Dario\source\c#\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.dll
+C:\Users\Dario\source\c#\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.pdb
