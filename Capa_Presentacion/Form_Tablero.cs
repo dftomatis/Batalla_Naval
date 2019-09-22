@@ -21,8 +21,8 @@ namespace Capa_Presentacion
             public Form_Tablero()
         {
             InitializeComponent();
-            Cargar_Grilla(30, 30, dataGridView_Tablero_1);
-            Cargar_Grilla(30, 30, dataGridView_Tablero_2);
+            Cargar_Grilla(25, 25, dataGridView_Tablero_1);
+            Cargar_Grilla(25, 25, dataGridView_Tablero_2);
         }
 
         private void Cargar_Grilla(int filas, int columnas, DataGridView tablero)
