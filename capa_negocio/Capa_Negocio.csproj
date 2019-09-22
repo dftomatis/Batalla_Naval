@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barco.cs" />
+    <Compile Include="EstrategiaA.cs" />
     <Compile Include="Tablero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

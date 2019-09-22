@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView_Tablero_1 = new System.Windows.Forms.DataGridView();
             this.dataGridView_Tablero_2 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_2)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +92,16 @@
             this.dataGridView_Tablero_2.Size = new System.Drawing.Size(650, 500);
             this.dataGridView_Tablero_2.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(79, 603);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // Form_Tablero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,6 +109,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView_Tablero_2);
             this.Controls.Add(this.dataGridView_Tablero_1);
             this.Name = "Form_Tablero";
@@ -115,6 +127,7 @@
 
         private System.Windows.Forms.DataGridView dataGridView_Tablero_1;
         private System.Windows.Forms.DataGridView dataGridView_Tablero_2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
