@@ -13,7 +13,7 @@ namespace Capa_Negocio
         //necesito tener la grilla del enemigo y crear una grilla auxiliar que contenga los disparos que voy haciendo
         //se puede usar la misma grilla????
 
-        Random rnd = new Random();
+        
        
         int[,] tableroControl;
         int disparosExitosos;
@@ -39,7 +39,7 @@ namespace Capa_Negocio
             }
         }
 
-        public int[] disparar()//dispara aleatoreamente desde la lista y elimina el elemento ya utilizado en cada disparo
+        public int[] disparar(Random rnd)//dispara aleatoreamente desde la lista y elimina el elemento ya utilizado en cada disparo
         {
             int[] disparo = new int[2];
 

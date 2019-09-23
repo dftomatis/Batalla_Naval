@@ -14,30 +14,31 @@ namespace Capa_Presentacion
     public partial class Form_Tablero : Form
     {
 
-        int nfilas = 10;
-        int ncolumnas = 10;
-        int[,] vector1= new int[10, 10];
-        int[,] vector2= new int[10, 10];
-        EstrategiaA estraA_P1 = new EstrategiaA();
-        EstrategiaA estraA_P2 = new EstrategiaA();
+        int nfilas;
+        int ncolumnas;
+        int[,] vector1;
+        int[,] vector2;
+        EstrategiaA estraA_P1;
+        EstrategiaA estraA_P2;
         int Player1DisparosExitosos;
         int Player1DisparosFallados;
         int Player1Intentos;
         int Player2DisparosExitosos;
         int Player2DisparosFallados;
         int Player2Intentos;
+        Boolean ganador;
+        
 
 
 
         public Form_Tablero()
         {
             InitializeComponent();
-            Cargar_Grilla(nfilas, ncolumnas, dataGridView_Tablero_1,1);
-            for (int t = 0; t < 10000000; t++)
-            { }
-            Cargar_Grilla(nfilas, ncolumnas, dataGridView_Tablero_2,2);
             btn_P1Disparar.Enabled = false;
             btn_P2Disparar.Enabled = false;
+            btnP1SelectEstrategia.Enabled = false;
+            btnP2SelectEstrategia.Enabled = false;
+            btn_Terminar.Enabled = false;
         }
 
         private void Cargar_Grilla(int filas, int columnas, DataGridView tablero,int jugador)
@@ -193,15 +194,16 @@ namespace Capa_Presentacion
             {
                 btn_P1Disparar.Enabled = true;
                 btn_P2Disparar.Enabled = true;
+                btn_Terminar.Enabled = true;
             }
             
         }
 
         private void Btn_P1Disparar_Click(object sender, EventArgs e)
         {
-
+            Random rnd = new Random();
             int[] disparo = new int[2];
-            disparo = estraA_P1.disparar();
+            disparo = estraA_P1.disparar(rnd);
 
             if (this.ActualizarGrilla(1, disparo))
             {
@@ -219,7 +221,10 @@ namespace Capa_Presentacion
             Player1Intentos++;
             if (Player1DisparosExitosos == 40)
             {
+                ganador = true;
                 MessageBox.Show("Jugador 1 Ganaste! en " + Player1Intentos.ToString() + " intentos");
+                btn_P1Disparar.Enabled = false;
+                btn_P2Disparar.Enabled = false;
             }
         }
 
@@ -231,14 +236,16 @@ namespace Capa_Presentacion
             {
                 btn_P1Disparar.Enabled = true;
                 btn_P2Disparar.Enabled = true;
+                btn_Terminar.Enabled = true;
             }
             
         }
 
         private void Btn_P2Disparar_Click(object sender, EventArgs e)
         {
+            Random rnd = new Random();
             int[] disparo = new int[2];
-            disparo = estraA_P2.disparar();
+            disparo = estraA_P2.disparar(rnd);
 
             if (this.ActualizarGrilla(2, disparo))
             {
@@ -256,8 +263,67 @@ namespace Capa_Presentacion
             Player2Intentos++;
             if (Player2DisparosExitosos == 40)
             {
+                ganador = true;
                 MessageBox.Show("Jugador 2 Ganaste! en " + Player2Intentos.ToString() + " intentos");
+                btn_P1Disparar.Enabled = false;
+                btn_P2Disparar.Enabled = false;
             }
+        }
+
+        private void Btn_Terminar_Click(object sender, EventArgs e)
+        {
+            btn_Terminar.Enabled = false;
+            while (!ganador)
+            {
+                if (btn_P1Disparar.Enabled == true)
+                {
+                    while (btn_P1Disparar.Enabled)
+                    {
+                        btn_P1Disparar.PerformClick();
+                    }
+                }
+                else
+                {
+                    while (btn_P2Disparar.Enabled)
+                    {
+                        btn_P2Disparar.PerformClick();
+                    }
+                }
+            }
+            
+        }
+
+        private void Btn_NuevaPartida_Click(object sender, EventArgs e)
+        {
+            Player1DisparosExitosos = 0;
+            Player1DisparosFallados = 0;
+            Player1Intentos = 0;
+            Player2DisparosExitosos = 0;
+            Player2DisparosFallados = 0;
+            Player2Intentos = 0;
+            ganador = false;
+            estraA_P1 = new EstrategiaA();
+            estraA_P2 = new EstrategiaA();
+            nfilas = 10;
+            ncolumnas = 10;
+            vector1 = new int[10, 10];
+            vector2 = new int[10, 10];
+            dataGridView_Tablero_1.Rows.Clear();
+            dataGridView_Tablero_1.Columns.Clear();
+            dataGridView_Tablero_1.Refresh();
+            dataGridView_Tablero_2.Rows.Clear();
+            dataGridView_Tablero_2.Columns.Clear();
+            dataGridView_Tablero_2.Refresh();
+            Cargar_Grilla(nfilas, ncolumnas, dataGridView_Tablero_1, 1);
+            for (int t = 0; t < 10000000; t++)
+            { }
+            Cargar_Grilla(nfilas, ncolumnas, dataGridView_Tablero_2, 2);
+            btn_P1Disparar.Enabled = false;
+            btn_P2Disparar.Enabled = false;
+            btnP2SelectEstrategia.Enabled = true;
+            btnP1SelectEstrategia.Enabled = true;
+            btn_Terminar.Enabled = false;
+            
         }
     }
 }
