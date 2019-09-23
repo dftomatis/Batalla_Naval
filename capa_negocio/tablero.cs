@@ -46,7 +46,6 @@ namespace Capa_Negocio
             int fila_aux=0;
             int columna_aux = 0;
             double orden = (int)(aleatoria.NextDouble() * 1000000);
-            //double limit = aleatoria.NextDouble() * 10;
             Boolean bandera = false;
 
             

@@ -14,20 +14,24 @@ namespace Capa_Presentacion
     public partial class Form_Tablero : Form
     {
 
-
+        int nfilas = 10;
+        int ncolumnas = 10;
+        int[,] vector1= new int[10, 10];
+        int[,] vector2= new int[10, 10];
+        EstrategiaA estraA = new EstrategiaA();
 
 
 
         public Form_Tablero()
         {
             InitializeComponent();
-            Cargar_Grilla(30, 30, dataGridView_Tablero_1);
+            Cargar_Grilla(nfilas, ncolumnas, dataGridView_Tablero_1,1);
             for (int t = 0; t < 10000000; t++)
             { }
-            Cargar_Grilla(30, 30, dataGridView_Tablero_2);
+            Cargar_Grilla(nfilas, ncolumnas, dataGridView_Tablero_2,2);
         }
 
-        private void Cargar_Grilla(int filas, int columnas, DataGridView tablero)
+        private void Cargar_Grilla(int filas, int columnas, DataGridView tablero,int jugador)
         {
             Barco b = new Barco();
             Tablero t = new Tablero();
@@ -35,6 +39,15 @@ namespace Capa_Presentacion
             vector = t.Cargar(filas, columnas);
             DataGridView panel = tablero;
 
+
+            if (jugador==1)
+            {
+                vector1 = vector;
+            }
+            else
+            {
+                vector2 = vector;
+            }
 
             for (int i = 0; i < columnas; i++)
             {
@@ -87,7 +100,14 @@ namespace Capa_Presentacion
 
 
 
-       // private boolean Actulaizar_Grilla(fila i, columna j)
+        // private boolean Actulaizar_Grilla(fila i, columna j)
+        private void ActualizarGrilla()
+        {
+            int[] disparo = new int[2];
+            disparo = estraA.disparar(nfilas, ncolumnas);
+            dataGridView_Tablero_1.Rows[disparo[0]].Cells[disparo[1]].Style.BackColor = Color.Red;
+        }
+
 
 
 
@@ -109,6 +129,7 @@ namespace Capa_Presentacion
             //deshabilita radiobutton (estrategias para seleccionar)
             //aca va el llamado a la estrategia que se seleccionó (se le pasa por parametro el tamaño de la grilla)
             //if(actualizargrilla)
+            this.ActualizarGrilla();
         }
     }
 }
