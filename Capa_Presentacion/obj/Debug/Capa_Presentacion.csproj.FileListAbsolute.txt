@@ -24,3 +24,16 @@ C:\Users\Dairo\source\repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Prese
 C:\Users\Dairo\source\repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.CopyComplete
 C:\Users\Dairo\source\repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.exe
 C:\Users\Dairo\source\repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.pdb
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\bin\Debug\Capa_Presentacion.exe.config
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\bin\Debug\Capa_Presentacion.exe
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\bin\Debug\Capa_Presentacion.pdb
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\bin\Debug\Capa_Negocio.dll
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\bin\Debug\Capa_Negocio.pdb
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.csprojAssemblyReference.cache
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.Form_Tablero.resources
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.Properties.Resources.resources
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.GenerateResource.cache
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.CopyComplete
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.exe
+C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Presentacion\obj\Debug\Capa_Presentacion.pdb
