@@ -38,8 +38,16 @@
             this.btn_P2Disparar = new System.Windows.Forms.Button();
             this.btn_Terminar = new System.Windows.Forms.Button();
             this.btn_NuevaPartida = new System.Windows.Forms.Button();
+            this.rb_Estrategia_Aleatoria = new System.Windows.Forms.RadioButton();
+            this.rb_estrategiaCaza = new System.Windows.Forms.RadioButton();
+            this.groupBox_Estrategias1 = new System.Windows.Forms.GroupBox();
+            this.rb_EstrategiaAleatoria2 = new System.Windows.Forms.RadioButton();
+            this.rb_EstrategiaCaza2 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_2)).BeginInit();
+            this.groupBox_Estrategias1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView_Tablero_1
@@ -99,7 +107,7 @@
             // 
             // btnP1SelectEstrategia
             // 
-            this.btnP1SelectEstrategia.Location = new System.Drawing.Point(12, 565);
+            this.btnP1SelectEstrategia.Location = new System.Drawing.Point(119, 40);
             this.btnP1SelectEstrategia.Name = "btnP1SelectEstrategia";
             this.btnP1SelectEstrategia.Size = new System.Drawing.Size(146, 23);
             this.btnP1SelectEstrategia.TabIndex = 3;
@@ -109,7 +117,7 @@
             // 
             // btn_P1Disparar
             // 
-            this.btn_P1Disparar.Location = new System.Drawing.Point(12, 609);
+            this.btn_P1Disparar.Location = new System.Drawing.Point(12, 624);
             this.btn_P1Disparar.Name = "btn_P1Disparar";
             this.btn_P1Disparar.Size = new System.Drawing.Size(146, 23);
             this.btn_P1Disparar.TabIndex = 4;
@@ -119,7 +127,7 @@
             // 
             // btnP2SelectEstrategia
             // 
-            this.btnP2SelectEstrategia.Location = new System.Drawing.Point(708, 565);
+            this.btnP2SelectEstrategia.Location = new System.Drawing.Point(120, 40);
             this.btnP2SelectEstrategia.Name = "btnP2SelectEstrategia";
             this.btnP2SelectEstrategia.Size = new System.Drawing.Size(146, 23);
             this.btnP2SelectEstrategia.TabIndex = 5;
@@ -129,7 +137,7 @@
             // 
             // btn_P2Disparar
             // 
-            this.btn_P2Disparar.Location = new System.Drawing.Point(708, 609);
+            this.btn_P2Disparar.Location = new System.Drawing.Point(708, 624);
             this.btn_P2Disparar.Name = "btn_P2Disparar";
             this.btn_P2Disparar.Size = new System.Drawing.Size(146, 23);
             this.btn_P2Disparar.TabIndex = 6;
@@ -157,6 +165,76 @@
             this.btn_NuevaPartida.UseVisualStyleBackColor = true;
             this.btn_NuevaPartida.Click += new System.EventHandler(this.Btn_NuevaPartida_Click);
             // 
+            // rb_Estrategia_Aleatoria
+            // 
+            this.rb_Estrategia_Aleatoria.AutoSize = true;
+            this.rb_Estrategia_Aleatoria.Location = new System.Drawing.Point(6, 23);
+            this.rb_Estrategia_Aleatoria.Name = "rb_Estrategia_Aleatoria";
+            this.rb_Estrategia_Aleatoria.Size = new System.Drawing.Size(66, 17);
+            this.rb_Estrategia_Aleatoria.TabIndex = 9;
+            this.rb_Estrategia_Aleatoria.TabStop = true;
+            this.rb_Estrategia_Aleatoria.Text = "Aleatoria";
+            this.rb_Estrategia_Aleatoria.UseVisualStyleBackColor = true;
+            // 
+            // rb_estrategiaCaza
+            // 
+            this.rb_estrategiaCaza.AutoSize = true;
+            this.rb_estrategiaCaza.Location = new System.Drawing.Point(5, 46);
+            this.rb_estrategiaCaza.Name = "rb_estrategiaCaza";
+            this.rb_estrategiaCaza.Size = new System.Drawing.Size(108, 17);
+            this.rb_estrategiaCaza.TabIndex = 10;
+            this.rb_estrategiaCaza.TabStop = true;
+            this.rb_estrategiaCaza.Text = "Busqueda y Caza";
+            this.rb_estrategiaCaza.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_Estrategias1
+            // 
+            this.groupBox_Estrategias1.Controls.Add(this.rb_estrategiaCaza);
+            this.groupBox_Estrategias1.Controls.Add(this.rb_Estrategia_Aleatoria);
+            this.groupBox_Estrategias1.Controls.Add(this.btnP1SelectEstrategia);
+            this.groupBox_Estrategias1.Location = new System.Drawing.Point(7, 525);
+            this.groupBox_Estrategias1.Name = "groupBox_Estrategias1";
+            this.groupBox_Estrategias1.Size = new System.Drawing.Size(279, 93);
+            this.groupBox_Estrategias1.TabIndex = 11;
+            this.groupBox_Estrategias1.TabStop = false;
+            this.groupBox_Estrategias1.Text = "Estrategias Jugador 1";
+            this.groupBox_Estrategias1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // rb_EstrategiaAleatoria2
+            // 
+            this.rb_EstrategiaAleatoria2.AutoSize = true;
+            this.rb_EstrategiaAleatoria2.Location = new System.Drawing.Point(6, 23);
+            this.rb_EstrategiaAleatoria2.Name = "rb_EstrategiaAleatoria2";
+            this.rb_EstrategiaAleatoria2.Size = new System.Drawing.Size(66, 17);
+            this.rb_EstrategiaAleatoria2.TabIndex = 12;
+            this.rb_EstrategiaAleatoria2.TabStop = true;
+            this.rb_EstrategiaAleatoria2.Text = "Aleatoria";
+            this.rb_EstrategiaAleatoria2.UseVisualStyleBackColor = true;
+            // 
+            // rb_EstrategiaCaza2
+            // 
+            this.rb_EstrategiaCaza2.AutoSize = true;
+            this.rb_EstrategiaCaza2.Location = new System.Drawing.Point(6, 46);
+            this.rb_EstrategiaCaza2.Name = "rb_EstrategiaCaza2";
+            this.rb_EstrategiaCaza2.Size = new System.Drawing.Size(108, 17);
+            this.rb_EstrategiaCaza2.TabIndex = 13;
+            this.rb_EstrategiaCaza2.TabStop = true;
+            this.rb_EstrategiaCaza2.Text = "Busqueda y Caza";
+            this.rb_EstrategiaCaza2.UseVisualStyleBackColor = true;
+            this.rb_EstrategiaCaza2.CheckedChanged += new System.EventHandler(this.RadioButton2_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rb_EstrategiaAleatoria2);
+            this.groupBox1.Controls.Add(this.rb_EstrategiaCaza2);
+            this.groupBox1.Controls.Add(this.btnP2SelectEstrategia);
+            this.groupBox1.Location = new System.Drawing.Point(708, 525);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(277, 93);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Estrategias Jugador 2";
+            // 
             // Form_Tablero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,12 +242,12 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox_Estrategias1);
             this.Controls.Add(this.btn_NuevaPartida);
             this.Controls.Add(this.btn_Terminar);
             this.Controls.Add(this.btn_P2Disparar);
-            this.Controls.Add(this.btnP2SelectEstrategia);
             this.Controls.Add(this.btn_P1Disparar);
-            this.Controls.Add(this.btnP1SelectEstrategia);
             this.Controls.Add(this.dataGridView_Tablero_2);
             this.Controls.Add(this.dataGridView_Tablero_1);
             this.Name = "Form_Tablero";
@@ -179,6 +257,10 @@
             this.Load += new System.EventHandler(this.Form_Tablero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_2)).EndInit();
+            this.groupBox_Estrategias1.ResumeLayout(false);
+            this.groupBox_Estrategias1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -193,6 +275,12 @@
         private System.Windows.Forms.Button btn_P2Disparar;
         private System.Windows.Forms.Button btn_Terminar;
         private System.Windows.Forms.Button btn_NuevaPartida;
+        private System.Windows.Forms.RadioButton rb_Estrategia_Aleatoria;
+        private System.Windows.Forms.RadioButton rb_estrategiaCaza;
+        private System.Windows.Forms.GroupBox groupBox_Estrategias1;
+        private System.Windows.Forms.RadioButton rb_EstrategiaAleatoria2;
+        private System.Windows.Forms.RadioButton rb_EstrategiaCaza2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

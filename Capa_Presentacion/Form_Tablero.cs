@@ -39,6 +39,11 @@ namespace Capa_Presentacion
             btnP1SelectEstrategia.Enabled = false;
             btnP2SelectEstrategia.Enabled = false;
             btn_Terminar.Enabled = false;
+            rb_Estrategia_Aleatoria.Enabled = false;
+            rb_EstrategiaAleatoria2.Enabled = false;
+            rb_estrategiaCaza.Enabled = false;
+            rb_EstrategiaCaza2.Enabled = false;
+
         }
 
         private void Cargar_Grilla(int filas, int columnas, DataGridView tablero,int jugador)
@@ -188,15 +193,20 @@ namespace Capa_Presentacion
 
         private void BtnSelectEstrategia_Click(object sender, EventArgs e)
         {
-            estraA_P1.recibirVector(vector2);
-            btnP1SelectEstrategia.Enabled = false;
-            if (btnP2SelectEstrategia.Enabled == false)
+            if (rb_Estrategia_Aleatoria.Checked)
             {
-                btn_P1Disparar.Enabled = true;
-                btn_P2Disparar.Enabled = true;
-                btn_Terminar.Enabled = true;
+                estraA_P1.recibirVector(vector2);
+                btnP1SelectEstrategia.Enabled = false;
+                if (btnP2SelectEstrategia.Enabled == false)
+                {
+                    btn_P1Disparar.Enabled = true;
+                    btn_P2Disparar.Enabled = true;
+                    btn_Terminar.Enabled = true;
+                }
             }
-            
+            rb_estrategiaCaza.Enabled = false;
+            rb_Estrategia_Aleatoria.Enabled = false;
+
         }
 
         private void Btn_P1Disparar_Click(object sender, EventArgs e)
@@ -230,15 +240,20 @@ namespace Capa_Presentacion
 
         private void BtnP2SelectEstrategia_Click(object sender, EventArgs e)
         {
-            estraA_P2.recibirVector(vector1);
-            btnP2SelectEstrategia.Enabled = false;
-            if (btnP1SelectEstrategia.Enabled == false)
+            if (rb_EstrategiaAleatoria2.Checked)
             {
-                btn_P1Disparar.Enabled = true;
-                btn_P2Disparar.Enabled = true;
-                btn_Terminar.Enabled = true;
+                estraA_P2.recibirVector(vector1);
+                btnP2SelectEstrategia.Enabled = false;
+                if (btnP1SelectEstrategia.Enabled == false)
+                {
+                    btn_P1Disparar.Enabled = true;
+                    btn_P2Disparar.Enabled = true;
+                    btn_Terminar.Enabled = true;
+                }
             }
             
+            rb_EstrategiaAleatoria2.Enabled = false;
+            rb_EstrategiaCaza2.Enabled = false;
         }
 
         private void Btn_P2Disparar_Click(object sender, EventArgs e)
@@ -304,10 +319,10 @@ namespace Capa_Presentacion
             ganador = false;
             estraA_P1 = new EstrategiaA();
             estraA_P2 = new EstrategiaA();
-            nfilas = 10;
-            ncolumnas = 10;
-            vector1 = new int[10, 10];
-            vector2 = new int[10, 10];
+            nfilas = 25;
+            ncolumnas = 30;
+            vector1 = new int[25, 30];
+            vector2 = new int[25, 30];
             dataGridView_Tablero_1.Rows.Clear();
             dataGridView_Tablero_1.Columns.Clear();
             dataGridView_Tablero_1.Refresh();
@@ -323,7 +338,25 @@ namespace Capa_Presentacion
             btnP2SelectEstrategia.Enabled = true;
             btnP1SelectEstrategia.Enabled = true;
             btn_Terminar.Enabled = false;
-            
+            rb_Estrategia_Aleatoria.Enabled = true;
+            rb_EstrategiaAleatoria2.Enabled = true;
+            rb_estrategiaCaza.Enabled = true;
+            rb_EstrategiaCaza2.Enabled = true;
+            rb_Estrategia_Aleatoria.Checked = false;
+            rb_EstrategiaAleatoria2.Checked = false;
+            rb_estrategiaCaza.Checked = false;
+            rb_EstrategiaCaza2.Checked = false;
+
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
