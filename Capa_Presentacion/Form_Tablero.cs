@@ -462,7 +462,7 @@ namespace Capa_Presentacion
             Simulacion s = new Simulacion();
             s.simular();
             MessageBox.Show("Simulaciones:" + s.partidas.ToString() + 
-                "\n"+"P1 Facertados: "+s.player1DisparosExitosos);
+                "\n"+"P1 Acertados: "+s.player1DisparosExitosos);
 
         }
     }

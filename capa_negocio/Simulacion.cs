@@ -10,8 +10,8 @@ namespace Capa_Negocio
     {
 
 
-        int filas=10;
-        int columnas=10;
+        int filas=100;
+        int columnas=100;
         int[,] vector1;
         int[,] vector2;
         EstrategiaA estraA_P1;
@@ -40,18 +40,24 @@ namespace Capa_Negocio
         float efectividadPartidas_p2=0;
         float efectividadMediaPartidas_p2=0;
         public int partidas = 0;
+        int disparosOK1 = 0;
+        int disparosOK2 = 0;
 
         public void simular()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 1000; i++)
             {
+                disparosOK1 = 0;
+                disparosOK2 = 0;
+                turnoP1 = true;
+                partido = true;
                 partidas++;
                 estraA_P1 = new EstrategiaA();
                 estraA_P2 = new EstrategiaA();
                 t = new Tablero();
                 vector1 = new int[filas, columnas];
                 vector1 = t.Cargar(filas, columnas);
-                for (int t = 0; t < 10000; t++)
+                for (int t = 0; t < 100000; t++)
                 { }
                 vector2 = new int[filas, columnas];
                 vector2 = t.Cargar(filas, columnas);
@@ -118,10 +124,13 @@ namespace Capa_Negocio
                     {
                         turnoP1 = true;
                         player1DisparosExitosos++;
+                        disparosOK1++;
+                        
                     }
                     else
                     {
                         turnoP1 = false;
+                        turnoP2 = true;
                         player1DisparosFallados++;
                     }
 
@@ -144,16 +153,26 @@ namespace Capa_Negocio
                     {
                         turnoP2 = true;
                         player2DisparosExitosos++;
+                        disparosOK2++;
                     }
                     else
                     {
                         turnoP2 = false;
+                        turnoP1 = true;
                         player2DisparosFallados++;
                     }
 
                 }
                 
             }
+            if (disparosOK1 == 40 || disparosOK2 == 40)
+            {
+                
+                turnoP2 = false;
+                turnoP1 = false;
+                partido = false;
+            }
+           
         }
 
     }
