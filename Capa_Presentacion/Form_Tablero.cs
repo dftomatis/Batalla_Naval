@@ -20,6 +20,8 @@ namespace Capa_Presentacion
         int[,] vector2;
         EstrategiaA estraA_P1;
         EstrategiaA estraA_P2;
+        Montecarlo monte_P1;
+        Montecarlo monte_P2;
         int Player1DisparosExitosos;
         int Player1DisparosFallados;
         int Player1Intentos;
@@ -27,7 +29,15 @@ namespace Capa_Presentacion
         int Player2DisparosFallados;
         int Player2Intentos;
         Boolean ganador;
-        
+        float efectividadTiros_p1;
+        float efectividadMediaTiros_p1;
+        float efectividadPartidas_p1;
+        float efectividadMediaPartidas_p1;
+        float efectividadTiros_p2;
+        float efectividadMediaTiros_p2;
+        float efectividadPartidas_p2;
+        float efectividadMediaPartidas_p2;
+
 
 
 
@@ -43,6 +53,27 @@ namespace Capa_Presentacion
             rb_EstrategiaAleatoria2.Enabled = false;
             rb_estrategiaCaza.Enabled = false;
             rb_EstrategiaCaza2.Enabled = false;
+            txtAcertadosP1.ReadOnly = true;
+            txtAcertadosP2.ReadOnly = true;
+           
+            txtEfectividadTirosP1.ReadOnly = true;
+            txtEfectividadTirosP2.ReadOnly = true;
+            txtFalladosP1.ReadOnly = true;
+            txtFalladosP2.ReadOnly = true;
+            txtGanadasP1.ReadOnly = true;
+            txtGanadasP2.ReadOnly = true;
+            txtMediaPartidasP1.ReadOnly = true;
+            txtMediaPartidasP2.ReadOnly = true;
+            txtMediaTirosP1.ReadOnly = true;
+            txtMediaTirosP2.ReadOnly = true;
+            txtNroPartidaP1.ReadOnly = true;
+            txtNroPartidaP2.ReadOnly = true;
+            txtPerdidasP1.ReadOnly = true;
+            txtPerdidasP2.ReadOnly = true;
+            txtTotalTirosP1.ReadOnly = true;
+            txtTotalTirosP2.ReadOnly = true;
+            monte_P1 = new Montecarlo();
+            monte_P2 = new Montecarlo();
 
         }
 
@@ -168,26 +199,7 @@ namespace Capa_Presentacion
             }
         }
 
-        private void PasarVectorAEstrategia(int[,] vector)
-        {
-
-        }
-
-
-
-
-
-
-
-        private void Form_Tablero_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataGridView_Tablero_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
 
         
 
@@ -218,23 +230,33 @@ namespace Capa_Presentacion
             if (this.ActualizarGrilla(1, disparo))
             {
                 Player1DisparosExitosos++;
+                monte_P1.TirosAcertados++;
+                txtAcertadosP1.Text = monte_P1.TirosAcertados.ToString();
                 btn_P1Disparar.Enabled = true;
                 btn_P2Disparar.Enabled = false;
             }
             else
             {
                 Player1DisparosFallados++;
+                monte_P1.TirosFallados++;
+                txtFalladosP1.Text = monte_P1.TirosFallados.ToString();
                 btn_P1Disparar.Enabled = false;
                 btn_P2Disparar.Enabled = true;
             }
 
             Player1Intentos++;
+            monte_P1.TotalTiros++;
+            txtTotalTirosP1.Text = monte_P1.TotalTiros.ToString();
             if (Player1DisparosExitosos == 40)
             {
                 ganador = true;
                 MessageBox.Show("Jugador 1 Ganaste! en " + Player1Intentos.ToString() + " intentos");
                 btn_P1Disparar.Enabled = false;
                 btn_P2Disparar.Enabled = false;
+                monte_P1.PartidasGanadas++;
+                monte_P1.ResultadoPartidaActual = 1;
+                txtGanadasP1.Text = monte_P1.PartidasGanadas.ToString();
+                CalcularMontecarlo();
             }
         }
 
@@ -265,23 +287,33 @@ namespace Capa_Presentacion
             if (this.ActualizarGrilla(2, disparo))
             {
                 Player2DisparosExitosos++;
+                monte_P2.TirosAcertados++;
+                txtAcertadosP2.Text = monte_P2.TirosAcertados.ToString();
                 btn_P1Disparar.Enabled = false;
                 btn_P2Disparar.Enabled = true;
             }
             else
             {
                 Player2DisparosFallados++;
+                monte_P2.TirosFallados++;
+                txtFalladosP2.Text = monte_P2.TirosFallados.ToString();
                 btn_P1Disparar.Enabled = true;
                 btn_P2Disparar.Enabled = false;
             }
 
             Player2Intentos++;
+            monte_P2.TotalTiros++;
+            txtTotalTirosP2.Text = monte_P2.TotalTiros.ToString();
             if (Player2DisparosExitosos == 40)
             {
                 ganador = true;
                 MessageBox.Show("Jugador 2 Ganaste! en " + Player2Intentos.ToString() + " intentos");
                 btn_P1Disparar.Enabled = false;
                 btn_P2Disparar.Enabled = false;
+                monte_P2.PartidasGanadas++;
+                monte_P2.ResultadoPartidaActual = 1;
+                txtGanadasP2.Text = monte_P2.PartidasGanadas.ToString();
+                CalcularMontecarlo();
             }
         }
 
@@ -295,6 +327,7 @@ namespace Capa_Presentacion
                     while (btn_P1Disparar.Enabled)
                     {
                         btn_P1Disparar.PerformClick();
+                        
                     }
                 }
                 else
@@ -302,6 +335,7 @@ namespace Capa_Presentacion
                     while (btn_P2Disparar.Enabled)
                     {
                         btn_P2Disparar.PerformClick();
+                        
                     }
                 }
             }
@@ -346,7 +380,61 @@ namespace Capa_Presentacion
             rb_EstrategiaAleatoria2.Checked = false;
             rb_estrategiaCaza.Checked = false;
             rb_EstrategiaCaza2.Checked = false;
+            monte_P1.TirosAcertados = 0;
+            monte_P2.TirosAcertados = 0;
+            monte_P1.TirosFallados = 0;
+            monte_P2.TirosFallados = 0;
+            monte_P1.EfectividadTiros = 0;
+            monte_P2.EfectividadTiros = 0;
+            monte_P1.TotalTiros = 0;
+            monte_P2.TotalTiros = 0;
+            monte_P1.ResultadoPartidaActual = 0;
+            monte_P2.ResultadoPartidaActual = 0;
+            txtAcertadosP1.Text = "";
+            txtAcertadosP2.Text = "";
+            txtFalladosP1.Text = "";
+            txtFalladosP2.Text = "";
+            txtTotalTirosP1.Text = "";
+            txtTotalTirosP2.Text = "";
+            txtEfectividadTirosP1.Text = "";
+            txtEfectividadTirosP2.Text = "";
+            rb_Estrategia_Aleatoria.Checked = true;
+            rb_EstrategiaAleatoria2.Checked = true;
 
+
+        }
+
+
+
+        private void CalcularMontecarlo()
+        {
+            monte_P1.NumeroPartidas++;
+            monte_P2.NumeroPartidas++;
+            monte_P1.PartidasPerdidas = monte_P1.NumeroPartidas - monte_P1.PartidasGanadas;
+            monte_P2.PartidasPerdidas = monte_P2.NumeroPartidas - monte_P2.PartidasGanadas;
+            efectividadTiros_p1 = monte_P1.calcularEfectividadTiros();
+            efectividadTiros_p2 = monte_P2.calcularEfectividadTiros();
+            efectividadMediaTiros_p1 = monte_P1.calcularEfectividadMediaTiros();
+            efectividadMediaTiros_p2 = monte_P2.calcularEfectividadMediaTiros();
+            efectividadMediaPartidas_p1 = monte_P1.calcularEfectividadMediaPartidas();
+            efectividadMediaPartidas_p2 = monte_P2.calcularEfectividadMediaPartidas();
+            CompletarDatos();
+
+        }
+        public void CompletarDatos()
+        {
+            txtNroPartidaP1.Text = monte_P1.NumeroPartidas.ToString();
+            txtNroPartidaP2.Text = monte_P2.NumeroPartidas.ToString();
+            
+            txtEfectividadTirosP1.Text = efectividadTiros_p1.ToString()+"%";
+            txtEfectividadTirosP2.Text = efectividadTiros_p2.ToString() + "%";
+            txtMediaPartidasP1.Text = efectividadMediaPartidas_p1.ToString();
+            txtMediaPartidasP2.Text = efectividadMediaPartidas_p2.ToString();
+            txtMediaTirosP1.Text = efectividadMediaTiros_p1.ToString();
+            txtMediaTirosP2.Text = efectividadMediaTiros_p2.ToString();
+            txtPerdidasP1.Text = monte_P1.PartidasPerdidas.ToString() ;
+            txtPerdidasP2.Text = monte_P2.PartidasPerdidas.ToString();
+            
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)

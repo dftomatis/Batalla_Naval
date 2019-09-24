@@ -69,19 +69,15 @@
             this.txtTotalTirosP2 = new System.Windows.Forms.TextBox();
             this.txtNroPartidaP2 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtMediaPartidasP1 = new System.Windows.Forms.TextBox();
-            this.txtEfectividadPartidasP1 = new System.Windows.Forms.TextBox();
             this.txtPerdidasP1 = new System.Windows.Forms.TextBox();
             this.txtGanadasP1 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtMediaPartidasP2 = new System.Windows.Forms.TextBox();
-            this.txtEfectividadPartidasP2 = new System.Windows.Forms.TextBox();
             this.txtPerdidasP2 = new System.Windows.Forms.TextBox();
             this.txtGanadasP2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_1)).BeginInit();
@@ -114,9 +110,8 @@
             this.dataGridView_Tablero_1.ReadOnly = true;
             this.dataGridView_Tablero_1.RowHeadersVisible = false;
             this.dataGridView_Tablero_1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView_Tablero_1.Size = new System.Drawing.Size(650, 500);
+            this.dataGridView_Tablero_1.Size = new System.Drawing.Size(650, 450);
             this.dataGridView_Tablero_1.TabIndex = 0;
-            this.dataGridView_Tablero_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_Tablero_1_CellContentClick);
             // 
             // dataGridView_Tablero_2
             // 
@@ -142,7 +137,7 @@
             this.dataGridView_Tablero_2.ReadOnly = true;
             this.dataGridView_Tablero_2.RowHeadersVisible = false;
             this.dataGridView_Tablero_2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView_Tablero_2.Size = new System.Drawing.Size(650, 500);
+            this.dataGridView_Tablero_2.Size = new System.Drawing.Size(650, 450);
             this.dataGridView_Tablero_2.TabIndex = 1;
             // 
             // btnP1SelectEstrategia
@@ -157,7 +152,7 @@
             // 
             // btn_P1Disparar
             // 
-            this.btn_P1Disparar.Location = new System.Drawing.Point(307, 545);
+            this.btn_P1Disparar.Location = new System.Drawing.Point(307, 492);
             this.btn_P1Disparar.Name = "btn_P1Disparar";
             this.btn_P1Disparar.Size = new System.Drawing.Size(96, 63);
             this.btn_P1Disparar.TabIndex = 4;
@@ -177,7 +172,7 @@
             // 
             // btn_P2Disparar
             // 
-            this.btn_P2Disparar.Location = new System.Drawing.Point(1010, 545);
+            this.btn_P2Disparar.Location = new System.Drawing.Point(1011, 492);
             this.btn_P2Disparar.Name = "btn_P2Disparar";
             this.btn_P2Disparar.Size = new System.Drawing.Size(96, 63);
             this.btn_P2Disparar.TabIndex = 6;
@@ -187,7 +182,7 @@
             // 
             // btn_Terminar
             // 
-            this.btn_Terminar.Location = new System.Drawing.Point(1262, 601);
+            this.btn_Terminar.Location = new System.Drawing.Point(1263, 548);
             this.btn_Terminar.Name = "btn_Terminar";
             this.btn_Terminar.Size = new System.Drawing.Size(96, 63);
             this.btn_Terminar.TabIndex = 7;
@@ -197,7 +192,7 @@
             // 
             // btn_NuevaPartida
             // 
-            this.btn_NuevaPartida.Location = new System.Drawing.Point(1262, 674);
+            this.btn_NuevaPartida.Location = new System.Drawing.Point(1263, 621);
             this.btn_NuevaPartida.Name = "btn_NuevaPartida";
             this.btn_NuevaPartida.Size = new System.Drawing.Size(96, 63);
             this.btn_NuevaPartida.TabIndex = 8;
@@ -232,7 +227,7 @@
             this.groupBox_Estrategias1.Controls.Add(this.rb_estrategiaCaza);
             this.groupBox_Estrategias1.Controls.Add(this.rb_Estrategia_Aleatoria);
             this.groupBox_Estrategias1.Controls.Add(this.btnP1SelectEstrategia);
-            this.groupBox_Estrategias1.Location = new System.Drawing.Point(7, 525);
+            this.groupBox_Estrategias1.Location = new System.Drawing.Point(7, 472);
             this.groupBox_Estrategias1.Name = "groupBox_Estrategias1";
             this.groupBox_Estrategias1.Size = new System.Drawing.Size(279, 93);
             this.groupBox_Estrategias1.TabIndex = 11;
@@ -268,7 +263,7 @@
             this.groupBox1.Controls.Add(this.rb_EstrategiaAleatoria2);
             this.groupBox1.Controls.Add(this.rb_EstrategiaCaza2);
             this.groupBox1.Controls.Add(this.btnP2SelectEstrategia);
-            this.groupBox1.Location = new System.Drawing.Point(708, 525);
+            this.groupBox1.Location = new System.Drawing.Point(709, 472);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(277, 93);
             this.groupBox1.TabIndex = 14;
@@ -277,42 +272,42 @@
             // 
             // txtNroPartidaP1
             // 
-            this.txtNroPartidaP1.Location = new System.Drawing.Point(7, 655);
+            this.txtNroPartidaP1.Location = new System.Drawing.Point(7, 602);
             this.txtNroPartidaP1.Name = "txtNroPartidaP1";
             this.txtNroPartidaP1.Size = new System.Drawing.Size(82, 20);
             this.txtNroPartidaP1.TabIndex = 15;
             // 
             // txtTotalTirosP1
             // 
-            this.txtTotalTirosP1.Location = new System.Drawing.Point(96, 655);
+            this.txtTotalTirosP1.Location = new System.Drawing.Point(96, 602);
             this.txtTotalTirosP1.Name = "txtTotalTirosP1";
             this.txtTotalTirosP1.Size = new System.Drawing.Size(82, 20);
             this.txtTotalTirosP1.TabIndex = 16;
             // 
             // txtAcertadosP1
             // 
-            this.txtAcertadosP1.Location = new System.Drawing.Point(184, 655);
+            this.txtAcertadosP1.Location = new System.Drawing.Point(184, 602);
             this.txtAcertadosP1.Name = "txtAcertadosP1";
             this.txtAcertadosP1.Size = new System.Drawing.Size(63, 20);
             this.txtAcertadosP1.TabIndex = 17;
             // 
             // txtFalladosP1
             // 
-            this.txtFalladosP1.Location = new System.Drawing.Point(252, 655);
+            this.txtFalladosP1.Location = new System.Drawing.Point(252, 602);
             this.txtFalladosP1.Name = "txtFalladosP1";
             this.txtFalladosP1.Size = new System.Drawing.Size(63, 20);
             this.txtFalladosP1.TabIndex = 18;
             // 
             // txtEfectividadTirosP1
             // 
-            this.txtEfectividadTirosP1.Location = new System.Drawing.Point(321, 655);
+            this.txtEfectividadTirosP1.Location = new System.Drawing.Point(321, 602);
             this.txtEfectividadTirosP1.Name = "txtEfectividadTirosP1";
             this.txtEfectividadTirosP1.Size = new System.Drawing.Size(82, 20);
             this.txtEfectividadTirosP1.TabIndex = 19;
             // 
             // txtMediaTirosP1
             // 
-            this.txtMediaTirosP1.Location = new System.Drawing.Point(409, 655);
+            this.txtMediaTirosP1.Location = new System.Drawing.Point(409, 602);
             this.txtMediaTirosP1.Name = "txtMediaTirosP1";
             this.txtMediaTirosP1.Size = new System.Drawing.Size(82, 20);
             this.txtMediaTirosP1.TabIndex = 20;
@@ -320,17 +315,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 639);
+            this.label1.Location = new System.Drawing.Point(4, 586);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 21;
             this.label1.Text = "Nº De Partidas";
-            
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 639);
+            this.label2.Location = new System.Drawing.Point(95, 586);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 22;
@@ -339,7 +333,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(181, 639);
+            this.label3.Location = new System.Drawing.Point(181, 586);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 23;
@@ -348,7 +342,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(249, 639);
+            this.label4.Location = new System.Drawing.Point(249, 586);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 24;
@@ -357,7 +351,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(318, 639);
+            this.label5.Location = new System.Drawing.Point(318, 586);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 25;
@@ -366,7 +360,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(406, 639);
+            this.label6.Location = new System.Drawing.Point(406, 586);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 13);
             this.label6.TabIndex = 26;
@@ -375,7 +369,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1109, 639);
+            this.label7.Location = new System.Drawing.Point(1110, 586);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 13);
             this.label7.TabIndex = 38;
@@ -384,7 +378,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1021, 639);
+            this.label8.Location = new System.Drawing.Point(1022, 586);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 37;
@@ -393,7 +387,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(952, 639);
+            this.label9.Location = new System.Drawing.Point(953, 586);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 36;
@@ -402,7 +396,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(884, 639);
+            this.label10.Location = new System.Drawing.Point(885, 586);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 13);
             this.label10.TabIndex = 35;
@@ -411,7 +405,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(798, 639);
+            this.label11.Location = new System.Drawing.Point(799, 586);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 13);
             this.label11.TabIndex = 34;
@@ -420,7 +414,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(707, 639);
+            this.label12.Location = new System.Drawing.Point(708, 586);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 13);
             this.label12.TabIndex = 33;
@@ -428,42 +422,42 @@
             // 
             // txtMediaTirosP2
             // 
-            this.txtMediaTirosP2.Location = new System.Drawing.Point(1112, 655);
+            this.txtMediaTirosP2.Location = new System.Drawing.Point(1113, 602);
             this.txtMediaTirosP2.Name = "txtMediaTirosP2";
             this.txtMediaTirosP2.Size = new System.Drawing.Size(82, 20);
             this.txtMediaTirosP2.TabIndex = 32;
             // 
             // txtEfectividadTirosP2
             // 
-            this.txtEfectividadTirosP2.Location = new System.Drawing.Point(1024, 655);
+            this.txtEfectividadTirosP2.Location = new System.Drawing.Point(1025, 602);
             this.txtEfectividadTirosP2.Name = "txtEfectividadTirosP2";
             this.txtEfectividadTirosP2.Size = new System.Drawing.Size(82, 20);
             this.txtEfectividadTirosP2.TabIndex = 31;
             // 
             // txtFalladosP2
             // 
-            this.txtFalladosP2.Location = new System.Drawing.Point(955, 655);
+            this.txtFalladosP2.Location = new System.Drawing.Point(956, 602);
             this.txtFalladosP2.Name = "txtFalladosP2";
             this.txtFalladosP2.Size = new System.Drawing.Size(63, 20);
             this.txtFalladosP2.TabIndex = 30;
             // 
             // txtAcertadosP2
             // 
-            this.txtAcertadosP2.Location = new System.Drawing.Point(887, 655);
+            this.txtAcertadosP2.Location = new System.Drawing.Point(888, 602);
             this.txtAcertadosP2.Name = "txtAcertadosP2";
             this.txtAcertadosP2.Size = new System.Drawing.Size(63, 20);
             this.txtAcertadosP2.TabIndex = 29;
             // 
             // txtTotalTirosP2
             // 
-            this.txtTotalTirosP2.Location = new System.Drawing.Point(799, 655);
+            this.txtTotalTirosP2.Location = new System.Drawing.Point(800, 602);
             this.txtTotalTirosP2.Name = "txtTotalTirosP2";
             this.txtTotalTirosP2.Size = new System.Drawing.Size(82, 20);
             this.txtTotalTirosP2.TabIndex = 28;
             // 
             // txtNroPartidaP2
             // 
-            this.txtNroPartidaP2.Location = new System.Drawing.Point(710, 655);
+            this.txtNroPartidaP2.Location = new System.Drawing.Point(711, 602);
             this.txtNroPartidaP2.Name = "txtNroPartidaP2";
             this.txtNroPartidaP2.Size = new System.Drawing.Size(82, 20);
             this.txtNroPartidaP2.TabIndex = 27;
@@ -471,25 +465,16 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(337, 695);
+            this.label13.Location = new System.Drawing.Point(250, 642);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 13);
             this.label13.TabIndex = 46;
             this.label13.Text = "Efectividad Media";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(256, 695);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 13);
-            this.label14.TabIndex = 45;
-            this.label14.Text = "Efectividad";
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(161, 695);
+            this.label15.Location = new System.Drawing.Point(161, 642);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 13);
             this.label15.TabIndex = 44;
@@ -498,37 +483,29 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(70, 695);
+            this.label16.Location = new System.Drawing.Point(70, 642);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(91, 13);
             this.label16.TabIndex = 43;
             this.label16.Text = "Partidas Ganadas";
-            
             // 
             // txtMediaPartidasP1
             // 
-            this.txtMediaPartidasP1.Location = new System.Drawing.Point(340, 711);
+            this.txtMediaPartidasP1.Location = new System.Drawing.Point(253, 658);
             this.txtMediaPartidasP1.Name = "txtMediaPartidasP1";
             this.txtMediaPartidasP1.Size = new System.Drawing.Size(89, 20);
             this.txtMediaPartidasP1.TabIndex = 42;
             // 
-            // txtEfectividadPartidasP1
-            // 
-            this.txtEfectividadPartidasP1.Location = new System.Drawing.Point(252, 711);
-            this.txtEfectividadPartidasP1.Name = "txtEfectividadPartidasP1";
-            this.txtEfectividadPartidasP1.Size = new System.Drawing.Size(82, 20);
-            this.txtEfectividadPartidasP1.TabIndex = 41;
-            // 
             // txtPerdidasP1
             // 
-            this.txtPerdidasP1.Location = new System.Drawing.Point(164, 711);
+            this.txtPerdidasP1.Location = new System.Drawing.Point(164, 658);
             this.txtPerdidasP1.Name = "txtPerdidasP1";
             this.txtPerdidasP1.Size = new System.Drawing.Size(83, 20);
             this.txtPerdidasP1.TabIndex = 40;
             // 
             // txtGanadasP1
             // 
-            this.txtGanadasP1.Location = new System.Drawing.Point(73, 711);
+            this.txtGanadasP1.Location = new System.Drawing.Point(73, 658);
             this.txtGanadasP1.Name = "txtGanadasP1";
             this.txtGanadasP1.Size = new System.Drawing.Size(85, 20);
             this.txtGanadasP1.TabIndex = 39;
@@ -536,25 +513,16 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1040, 695);
+            this.label17.Location = new System.Drawing.Point(954, 642);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(92, 13);
             this.label17.TabIndex = 54;
             this.label17.Text = "Efectividad Media";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(959, 695);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 13);
-            this.label18.TabIndex = 53;
-            this.label18.Text = "Efectividad";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(864, 695);
+            this.label19.Location = new System.Drawing.Point(865, 642);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(89, 13);
             this.label19.TabIndex = 52;
@@ -563,7 +531,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(773, 695);
+            this.label20.Location = new System.Drawing.Point(774, 642);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(91, 13);
             this.label20.TabIndex = 51;
@@ -571,28 +539,21 @@
             // 
             // txtMediaPartidasP2
             // 
-            this.txtMediaPartidasP2.Location = new System.Drawing.Point(1043, 711);
+            this.txtMediaPartidasP2.Location = new System.Drawing.Point(957, 658);
             this.txtMediaPartidasP2.Name = "txtMediaPartidasP2";
             this.txtMediaPartidasP2.Size = new System.Drawing.Size(89, 20);
             this.txtMediaPartidasP2.TabIndex = 50;
             // 
-            // txtEfectividadPartidasP2
-            // 
-            this.txtEfectividadPartidasP2.Location = new System.Drawing.Point(955, 711);
-            this.txtEfectividadPartidasP2.Name = "txtEfectividadPartidasP2";
-            this.txtEfectividadPartidasP2.Size = new System.Drawing.Size(82, 20);
-            this.txtEfectividadPartidasP2.TabIndex = 49;
-            // 
             // txtPerdidasP2
             // 
-            this.txtPerdidasP2.Location = new System.Drawing.Point(867, 711);
+            this.txtPerdidasP2.Location = new System.Drawing.Point(868, 658);
             this.txtPerdidasP2.Name = "txtPerdidasP2";
             this.txtPerdidasP2.Size = new System.Drawing.Size(83, 20);
             this.txtPerdidasP2.TabIndex = 48;
             // 
             // txtGanadasP2
             // 
-            this.txtGanadasP2.Location = new System.Drawing.Point(776, 711);
+            this.txtGanadasP2.Location = new System.Drawing.Point(777, 658);
             this.txtGanadasP2.Name = "txtGanadasP2";
             this.txtGanadasP2.Size = new System.Drawing.Size(85, 20);
             this.txtGanadasP2.TabIndex = 47;
@@ -603,21 +564,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1370, 701);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.txtMediaPartidasP2);
-            this.Controls.Add(this.txtEfectividadPartidasP2);
             this.Controls.Add(this.txtPerdidasP2);
             this.Controls.Add(this.txtGanadasP2);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtMediaPartidasP1);
-            this.Controls.Add(this.txtEfectividadPartidasP1);
             this.Controls.Add(this.txtPerdidasP1);
             this.Controls.Add(this.txtGanadasP1);
             this.Controls.Add(this.label7);
@@ -656,7 +613,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Batalla Naval";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form_Tablero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_2)).EndInit();
             this.groupBox_Estrategias1.ResumeLayout(false);
@@ -709,19 +665,15 @@
         private System.Windows.Forms.TextBox txtTotalTirosP2;
         private System.Windows.Forms.TextBox txtNroPartidaP2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtMediaPartidasP1;
-        private System.Windows.Forms.TextBox txtEfectividadPartidasP1;
         private System.Windows.Forms.TextBox txtPerdidasP1;
         private System.Windows.Forms.TextBox txtGanadasP1;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtMediaPartidasP2;
-        private System.Windows.Forms.TextBox txtEfectividadPartidasP2;
         private System.Windows.Forms.TextBox txtPerdidasP2;
         private System.Windows.Forms.TextBox txtGanadasP2;
     }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Barco.cs" />
     <Compile Include="EstrategiaA.cs" />
+    <Compile Include="Montecarlo.cs" />
     <Compile Include="Tablero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
