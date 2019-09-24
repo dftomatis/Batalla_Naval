@@ -80,6 +80,7 @@
             this.txtMediaPartidasP2 = new System.Windows.Forms.TextBox();
             this.txtPerdidasP2 = new System.Windows.Forms.TextBox();
             this.txtGanadasP2 = new System.Windows.Forms.TextBox();
+            this.btnSimular = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tablero_2)).BeginInit();
             this.groupBox_Estrategias1.SuspendLayout();
@@ -558,6 +559,16 @@
             this.txtGanadasP2.Size = new System.Drawing.Size(85, 20);
             this.txtGanadasP2.TabIndex = 47;
             // 
+            // btnSimular
+            // 
+            this.btnSimular.Location = new System.Drawing.Point(1262, 479);
+            this.btnSimular.Name = "btnSimular";
+            this.btnSimular.Size = new System.Drawing.Size(96, 63);
+            this.btnSimular.TabIndex = 55;
+            this.btnSimular.Text = "Simular 1000";
+            this.btnSimular.UseVisualStyleBackColor = true;
+            this.btnSimular.Click += new System.EventHandler(this.BtnSimular_Click);
+            // 
             // Form_Tablero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -565,6 +576,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1370, 701);
+            this.Controls.Add(this.btnSimular);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
@@ -676,6 +688,7 @@
         private System.Windows.Forms.TextBox txtMediaPartidasP2;
         private System.Windows.Forms.TextBox txtPerdidasP2;
         private System.Windows.Forms.TextBox txtGanadasP2;
+        private System.Windows.Forms.Button btnSimular;
     }
 }
 

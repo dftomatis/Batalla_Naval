@@ -22,7 +22,7 @@ namespace Capa_Negocio
         List<int[]> listaDisparos = new List<int[]>();
 
 
-        public void recibirVector(int[,] vector)//recibe el vestor y lo mete en una lista
+        public void recibirVector(int[,] vector)//recibe el vector y lo mete en una lista
         {
             tableroControl = new int[vector.GetLength(0),vector.GetLength(1)];
             tableroControl = vector;

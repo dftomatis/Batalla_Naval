@@ -79,7 +79,7 @@ namespace Capa_Presentacion
 
         private void Cargar_Grilla(int filas, int columnas, DataGridView tablero,int jugador)
         {
-            Barco b = new Barco();
+            
             Tablero t = new Tablero();
             int[,] vector = new int[filas, columnas];
             vector = t.Cargar(filas, columnas);
@@ -454,6 +454,15 @@ namespace Capa_Presentacion
 
         private void Label16_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void BtnSimular_Click(object sender, EventArgs e)
+        {
+            Simulacion s = new Simulacion();
+            s.simular();
+            MessageBox.Show("Simulaciones:" + s.partidas.ToString() + 
+                "\n"+"P1 Facertados: "+s.player1DisparosExitosos);
 
         }
     }
