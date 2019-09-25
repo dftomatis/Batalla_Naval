@@ -16,3 +16,9 @@ C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.cs
 C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.csproj.CoreCompileInputs.cache
 C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.dll
 C:\Users\Dario\Source\Repos\Batalla_Naval\Capa_Negocio\obj\Debug\Capa_Negocio.pdb
+C:\Users\Dario\Source\Repos\Batalla_Naval2\Capa_Negocio\bin\Debug\Capa_Negocio.dll
+C:\Users\Dario\Source\Repos\Batalla_Naval2\Capa_Negocio\bin\Debug\Capa_Negocio.pdb
+C:\Users\Dario\Source\Repos\Batalla_Naval2\Capa_Negocio\obj\Debug\Capa_Negocio.csprojAssemblyReference.cache
+C:\Users\Dario\Source\Repos\Batalla_Naval2\Capa_Negocio\obj\Debug\Capa_Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Dario\Source\Repos\Batalla_Naval2\Capa_Negocio\obj\Debug\Capa_Negocio.dll
+C:\Users\Dario\Source\Repos\Batalla_Naval2\Capa_Negocio\obj\Debug\Capa_Negocio.pdb

@@ -31,14 +31,24 @@ namespace Capa_Presentacion
         int Player2DisparosFallados;
         int Player2Intentos;
         Boolean ganador;
-        float efectividadTiros_p1;
+        float efectividadTiros_p1=0;
         float efectividadMediaTiros_p1;
         float efectividadPartidas_p1;
         float efectividadMediaPartidas_p1;
-        float efectividadTiros_p2;
+        float efectividadTiros_p2=0;
         float efectividadMediaTiros_p2;
         float efectividadPartidas_p2;
         float efectividadMediaPartidas_p2;
+        float efectividadMedia_p1;
+        float efectividadMedia_p2;
+        float efectividadTirosAnteriorP1;
+        float efectividadTirosAnteriorP2;
+        float mediaTirosTotales_P1;
+        float mediaTirosTotales_P2;
+        float mediaAcertados_P1;
+        float mediaAcertados_P2;
+        float mediaFallados_P1;
+        float mediaFallados_P2;
 
 
 
@@ -66,14 +76,20 @@ namespace Capa_Presentacion
             txtGanadasP2.ReadOnly = true;
             txtMediaPartidasP1.ReadOnly = true;
             txtMediaPartidasP2.ReadOnly = true;
-            txtMediaTirosP1.ReadOnly = true;
-            txtMediaTirosP2.ReadOnly = true;
             txtNroPartidaP1.ReadOnly = true;
             txtNroPartidaP2.ReadOnly = true;
             txtPerdidasP1.ReadOnly = true;
             txtPerdidasP2.ReadOnly = true;
             txtTotalTirosP1.ReadOnly = true;
             txtTotalTirosP2.ReadOnly = true;
+            txt_efectividad_Acum_P1.ReadOnly = true;
+            txt_efectividad_Acum_P2.ReadOnly = true;
+            txt_tiros_totales_P1.ReadOnly = true;
+            txt_tiros_totales_P2.ReadOnly = true;
+            txt_Acum_Acertados_P1.ReadOnly = true;
+            txt_acertados_acum_P2.ReadOnly = true;
+            txt_Acum_Fallados_P1.ReadOnly = true;
+            txt_fallados_acum_P2.ReadOnly = true;
             monte_P1 = new Montecarlo();
             monte_P2 = new Montecarlo();
 
@@ -277,12 +293,13 @@ namespace Capa_Presentacion
             if (Player1DisparosExitosos == 40)
             {
                 ganador = true;
-                MessageBox.Show("Jugador 1 Ganaste! en " + Player1Intentos.ToString() + " intentos");
+                MessageBox.Show("Jugador 1 Ganaste! en " + Player1Intentos.ToString() + " intentos",
+                    "Fin del Partido");
                 btn_P1Disparar.Enabled = false;
                 btn_P2Disparar.Enabled = false;
                 monte_P1.PartidasGanadas++;
                 monte_P1.ResultadoPartidaActual = 1;
-                txtGanadasP1.Text = monte_P1.PartidasGanadas.ToString();
+                
                 CalcularMontecarlo();
             }
         }
@@ -358,12 +375,13 @@ namespace Capa_Presentacion
             if (Player2DisparosExitosos == 40)
             {
                 ganador = true;
-                MessageBox.Show("Jugador 2 Ganaste! en " + Player2Intentos.ToString() + " intentos");
+                MessageBox.Show("Jugador 2 Ganaste! en " + Player2Intentos.ToString() + " intentos",
+                    "Fin del Partido");
                 btn_P1Disparar.Enabled = false;
                 btn_P2Disparar.Enabled = false;
                 monte_P2.PartidasGanadas++;
                 monte_P2.ResultadoPartidaActual = 1;
-                txtGanadasP2.Text = monte_P2.PartidasGanadas.ToString();
+                
                 CalcularMontecarlo();
             }
         }
@@ -406,8 +424,8 @@ namespace Capa_Presentacion
             estraA_P2 = new EstrategiaA();
             estraB_P1 = new EstrategiaB();
             estraB_P2 = new EstrategiaB();
-            nfilas = 30;
-            ncolumnas = 30;
+            nfilas = 50;
+            ncolumnas = 50;
             vector1 = new int[nfilas, ncolumnas];
             vector2 = new int[nfilas, ncolumnas];
             dataGridView_Tablero_1.Rows.Clear();
@@ -429,16 +447,14 @@ namespace Capa_Presentacion
             rb_EstrategiaAleatoria2.Enabled = true;
             rb_estrategiaCaza.Enabled = true;
             rb_EstrategiaCaza2.Enabled = true;
-            rb_Estrategia_Aleatoria.Checked = false;
+            rb_Estrategia_Aleatoria.Checked = true;
             rb_EstrategiaAleatoria2.Checked = false;
             rb_estrategiaCaza.Checked = false;
-            rb_EstrategiaCaza2.Checked = false;
+            rb_EstrategiaCaza2.Checked = true;
             monte_P1.TirosAcertados = 0;
             monte_P2.TirosAcertados = 0;
             monte_P1.TirosFallados = 0;
             monte_P2.TirosFallados = 0;
-            monte_P1.EfectividadTiros = 0;
-            monte_P2.EfectividadTiros = 0;
             monte_P1.TotalTiros = 0;
             monte_P2.TotalTiros = 0;
             monte_P1.ResultadoPartidaActual = 0;
@@ -451,8 +467,7 @@ namespace Capa_Presentacion
             txtTotalTirosP2.Text = "";
             txtEfectividadTirosP1.Text = "";
             txtEfectividadTirosP2.Text = "";
-            rb_Estrategia_Aleatoria.Checked = true;
-            rb_EstrategiaAleatoria2.Checked = true;
+           
 
 
         }
@@ -467,27 +482,50 @@ namespace Capa_Presentacion
             monte_P2.PartidasPerdidas = monte_P2.NumeroPartidas - monte_P2.PartidasGanadas;
             efectividadTiros_p1 = monte_P1.calcularEfectividadTiros();
             efectividadTiros_p2 = monte_P2.calcularEfectividadTiros();
-            efectividadMediaTiros_p1 = monte_P1.calcularEfectividadMediaTiros();
-            efectividadMediaTiros_p2 = monte_P2.calcularEfectividadMediaTiros();
             efectividadMediaPartidas_p1 = monte_P1.calcularEfectividadMediaPartidas();
             efectividadMediaPartidas_p2 = monte_P2.calcularEfectividadMediaPartidas();
+            efectividadMedia_p1 = monte_P1.calcularEfectividadMedia();
+            efectividadMedia_p2 = monte_P2.calcularEfectividadMedia();
+            mediaTirosTotales_P1=monte_P1.calcularMediaTirosTotales();
+            mediaTirosTotales_P2= monte_P2.calcularMediaTirosTotales();
+            mediaAcertados_P1= monte_P1.calcularMediaTirosAcertados();
+            mediaAcertados_P2 = monte_P2.calcularMediaTirosAcertados();
+            mediaFallados_P1= monte_P1.calcularMediaTirosFallados();
+            mediaFallados_P2=monte_P2.calcularMediaTirosFallados();
             CompletarDatos();
 
         }
         public void CompletarDatos()
         {
+            monte_P1.TotalTirosAcum += monte_P1.TotalTiros;
+            monte_P1.TirosAcertadosAcum += monte_P1.TirosAcertados;
+            monte_P1.TirosFalladosAcum += monte_P1.TirosFallados;
+            txtGanadasP1.Text = monte_P1.PartidasGanadas.ToString();
+            monte_P2.TotalTirosAcum += monte_P2.TotalTiros;
+            monte_P2.TirosAcertadosAcum += monte_P2.TirosAcertados;
+            monte_P2.TirosFalladosAcum += monte_P2.TirosFallados;
+            txtGanadasP2.Text = monte_P2.PartidasGanadas.ToString();
+
             txtNroPartidaP1.Text = monte_P1.NumeroPartidas.ToString();
             txtNroPartidaP2.Text = monte_P2.NumeroPartidas.ToString();
-            
             txtEfectividadTirosP1.Text = efectividadTiros_p1.ToString()+"%";
+            efectividadTirosAnteriorP1 = efectividadTiros_p1;
             txtEfectividadTirosP2.Text = efectividadTiros_p2.ToString() + "%";
+            efectividadTirosAnteriorP2 = efectividadTiros_p2;
             txtMediaPartidasP1.Text = efectividadMediaPartidas_p1.ToString();
             txtMediaPartidasP2.Text = efectividadMediaPartidas_p2.ToString();
-            txtMediaTirosP1.Text = efectividadMediaTiros_p1.ToString();
-            txtMediaTirosP2.Text = efectividadMediaTiros_p2.ToString();
             txtPerdidasP1.Text = monte_P1.PartidasPerdidas.ToString() ;
             txtPerdidasP2.Text = monte_P2.PartidasPerdidas.ToString();
-            
+            txt_efectividad_Acum_P1.Text = efectividadMedia_p1.ToString() + "%";
+            txt_efectividad_Acum_P2.Text = efectividadMedia_p2.ToString() + "%";
+            txt_tiros_totales_P1.Text = monte_P1.MediaTirosTotal.ToString();
+            txt_tiros_totales_P2.Text = monte_P2.MediaTirosTotal.ToString();
+            txt_Acum_Acertados_P1.Text = monte_P1.MediaTirosAcertados.ToString();
+            txt_acertados_acum_P2.Text = monte_P2.MediaTirosAcertados.ToString();
+            txt_Acum_Fallados_P1.Text = monte_P1.MediaTirosFallados.ToString();
+            txt_fallados_acum_P2.Text= monte_P2.MediaTirosFallados.ToString();
+
+
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)
@@ -514,8 +552,48 @@ namespace Capa_Presentacion
         {
             Simulacion s = new Simulacion();
             s.simular();
-            MessageBox.Show("Simulaciones:" + s.partidas.ToString() + 
-                "\n"+"P1 Acertados: "+s.player1DisparosExitosos);
+            string resultado;
+            if (s.ganador == 0)
+            {
+                resultado = "Empate";
+            }
+            else
+            {
+                if(s.ganador==1)
+                {
+                    resultado = "Ganó el Jugador 1";
+                }
+                else
+                {
+                    resultado = "Ganó el Jugador 2";
+                }
+            }
+            MessageBox.Show("Partidas Simuladas: " + s.partidas.ToString() +
+                "\n" + "Estrategia Jugador 1: Aleatoria" +
+                "\n" + "Estrategia Jugador 2: Busqueda y Caza" +
+                "\n" + "Resultado: " + resultado +
+                "\n" + "Estadisticas Jugador 1" +
+                "\n" + "Partidas Ganadas: " + s.sim_monte_P1.PartidasGanadas +
+                "\n" + "Partidas Perdidas: " + s.sim_monte_P1.PartidasPerdidas +
+                "\n" + "Promedio Partidas Ganadas: " + s.sim_monte_P1.EfectividadMediaPartidas+
+                "\n" + "Promedio Tiros por Partida: " + s.sim_monte_P1.MediaTirosTotal+
+                "\n" + "Promedio Tiros Acertados por Partida: " + s.sim_monte_P1.MediaTirosAcertados+
+                "\n" + "Promedio Tiros Fallados por Partida: " + s.sim_monte_P1.MediaTirosFallados+
+                "\n" + "Promedio Efectividad: " + s.sim_monte_P1.EfectividadMediaPartidas+"%"+
+                "\n" + "Estadisticas Jugador 2" +
+                "\n" + "Partidas Ganadas: " + s.sim_monte_P2.PartidasGanadas +
+                "\n" + "Partidas Perdidas: " + s.sim_monte_P2.PartidasPerdidas +
+                "\n" + "Promedio Partidas Ganadas: " + s.sim_monte_P2.EfectividadMediaPartidas +
+                "\n" + "Promedio Tiros por Partida: " + s.sim_monte_P2.MediaTirosTotal +
+                "\n" + "Promedio Tiros Acertados por Partida: " + s.sim_monte_P2.MediaTirosAcertados +
+                "\n" + "Promedio Tiros Fallados por Partida: " + s.sim_monte_P2.MediaTirosFallados +
+                "\n" + "Promedio Efectividad: " + s.sim_monte_P2.EfectividadMediaPartidas + "%" + "\n",
+                "Resultado de Simulacion Automática") ;
+
+        }
+
+        private void Label16_Click_1(object sender, EventArgs e)
+        {
 
         }
     }

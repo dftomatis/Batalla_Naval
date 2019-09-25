@@ -15,9 +15,9 @@ namespace Capa_Negocio
         int[,] vector1;
         int[,] vector2;
         EstrategiaA estraA_P1;
-        EstrategiaA estraA_P2;
-        Montecarlo sim_monte_P1=new Montecarlo();
-        Montecarlo sim_monte_P2= new Montecarlo();
+        EstrategiaB estraB_P2;
+        public Montecarlo sim_monte_P1=new Montecarlo();
+        public Montecarlo sim_monte_P2= new Montecarlo();
         Barco b;
         Tablero t;
         Boolean partido = true;
@@ -30,15 +30,7 @@ namespace Capa_Negocio
         public int player2DisparosExitosos=0;
         public int player2DisparosFallados =0;
         public int player2Intentos=0;
-        Boolean ganador;
-        float efectividadTiros_p1=0;
-        float efectividadMediaTiros_p1=0;
-        float efectividadPartidas_p1=0;
-        float efectividadMediaPartidas_p1=0;
-        float efectividadTiros_p2=0;
-        float efectividadMediaTiros_p2=0;
-        float efectividadPartidas_p2=0;
-        float efectividadMediaPartidas_p2=0;
+        public int ganador;
         public int partidas = 0;
         int disparosOK1 = 0;
         int disparosOK2 = 0;
@@ -49,13 +41,19 @@ namespace Capa_Negocio
             {
                 sim_monte_P1.ResultadoPartidaActual = 0;
                 sim_monte_P2.ResultadoPartidaActual = 0;
+                sim_monte_P1.TotalTiros = 0;
+                sim_monte_P2.TotalTiros = 0;
+                sim_monte_P1.TirosAcertados=0;
+                sim_monte_P2.TirosAcertados = 0;
+                sim_monte_P1.TirosFallados = 0;
+                sim_monte_P2.TirosFallados = 0;
                 disparosOK1 = 0;
                 disparosOK2 = 0;
                 turnoP1 = true;
                 partido = true;
                 partidas++;
                 estraA_P1 = new EstrategiaA();
-                estraA_P2 = new EstrategiaA();
+                estraB_P2 = new EstrategiaB();
                 t = new Tablero();
                 vector1 = new int[filas, columnas];
                 vector1 = t.Cargar(filas, columnas);
@@ -64,7 +62,7 @@ namespace Capa_Negocio
                 vector2 = new int[filas, columnas];
                 vector2 = t.Cargar(filas, columnas);
                 estraA_P1.recibirVector(vector2);
-                estraA_P2.recibirVector(vector1);
+                estraB_P2.recibirVector(vector1);
 
                 while (partido)
                 {
@@ -85,8 +83,24 @@ namespace Capa_Negocio
                         }
                     }
                 }
-                CalcularMontecarlo();
+                
 
+            }
+            if (sim_monte_P1.PartidasGanadas == sim_monte_P2.PartidasGanadas)
+            {
+                ganador = 0;
+            }
+            else
+            {
+                if (sim_monte_P1.PartidasGanadas > sim_monte_P2.PartidasGanadas)
+                {
+                    ganador = 1;
+                }
+                else
+                {
+                    ganador = 2;
+
+                }
             }
             
         }
@@ -101,7 +115,7 @@ namespace Capa_Negocio
             }
             else
             {
-                disparo = estraA_P2.disparar(rnd);
+                disparo = estraB_P2.disparar(rnd);
 
             }
              ActualizarGrilla(jugador, disparo);
@@ -154,6 +168,7 @@ namespace Capa_Negocio
                     sim_monte_P2.TotalTiros++;
                     if (vector1[disparo[0], disparo[1]] > 1 && vector1[disparo[0], disparo[1]] < 7)
                     {
+                        estraB_P2.cargarListaTirosPotenciales(disparo);
                         turnoP2 = true;
                         sim_monte_P2.TirosAcertados++;
                         disparosOK2++;
@@ -175,6 +190,7 @@ namespace Capa_Negocio
                 turnoP2 = false;
                 turnoP1 = false;
                 partido = false;
+                CalcularMontecarlo();
             }
             else
             {
@@ -185,6 +201,7 @@ namespace Capa_Negocio
                     turnoP2 = false;
                     turnoP1 = false;
                     partido = false;
+                    CalcularMontecarlo();
                 }
             }
            
@@ -198,15 +215,24 @@ namespace Capa_Negocio
             sim_monte_P2.NumeroPartidas++;
             sim_monte_P1.PartidasPerdidas = sim_monte_P1.NumeroPartidas - sim_monte_P1.PartidasGanadas;
             sim_monte_P2.PartidasPerdidas = sim_monte_P2.NumeroPartidas - sim_monte_P2.PartidasGanadas;
-            efectividadTiros_p1 = sim_monte_P1.calcularEfectividadTiros();
-            efectividadTiros_p2 = sim_monte_P2.calcularEfectividadTiros();
-            efectividadMediaTiros_p1 = sim_monte_P1.calcularEfectividadMediaTiros();
-            efectividadMediaTiros_p2 = sim_monte_P2.calcularEfectividadMediaTiros();
-            efectividadMediaPartidas_p1 = sim_monte_P1.calcularEfectividadMediaPartidas();
-            efectividadMediaPartidas_p2 = sim_monte_P2.calcularEfectividadMediaPartidas();
-            
+            sim_monte_P1.calcularEfectividadTiros();
+            sim_monte_P2.calcularEfectividadTiros();
+            sim_monte_P1.calcularEfectividadMediaPartidas();
+            sim_monte_P2.calcularEfectividadMediaPartidas();
+            sim_monte_P1.calcularEfectividadMedia();
+            sim_monte_P2.calcularEfectividadMedia();
+            sim_monte_P1.calcularMediaTirosTotales();
+            sim_monte_P2.calcularMediaTirosTotales();
+            sim_monte_P1.calcularMediaTirosAcertados();
+            sim_monte_P2.calcularMediaTirosAcertados();
+            sim_monte_P1.calcularMediaTirosFallados();
+            sim_monte_P2.calcularMediaTirosFallados();
+
 
         }
+
+
+        
 
     }
 }
