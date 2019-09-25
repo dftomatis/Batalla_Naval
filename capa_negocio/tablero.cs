@@ -86,7 +86,7 @@ namespace Capa_Negocio
                         fila_aux += 1;
                     }
                 }
-                
+                //el barco puede colocarse
                     if (fila != 0 && (tableroParaCargar[fila - 1, columna] < 2 || tableroParaCargar[fila - 1, columna] > 6))
                     {
 

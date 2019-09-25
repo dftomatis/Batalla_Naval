@@ -20,6 +20,8 @@ namespace Capa_Presentacion
         int[,] vector2;
         EstrategiaA estraA_P1;
         EstrategiaA estraA_P2;
+        EstrategiaB estraB_P1;
+        EstrategiaB estraB_P2;
         Montecarlo monte_P1;
         Montecarlo monte_P2;
         int Player1DisparosExitosos;
@@ -150,7 +152,8 @@ namespace Capa_Presentacion
         private Boolean ActualizarGrilla(int jugador,int[] disparo)
         {
             Boolean acierto;
-
+            int[] aux = new int[2];
+            aux = disparo;
             if (jugador == 1)
             {
                 if (disparo[0] == -1 && disparo[1] == -1)
@@ -216,6 +219,18 @@ namespace Capa_Presentacion
                     btn_Terminar.Enabled = true;
                 }
             }
+            else
+            {
+                estraB_P1.recibirVector(vector2);
+                btnP1SelectEstrategia.Enabled = false;
+                if (btnP2SelectEstrategia.Enabled == false)
+                {
+                    btn_P1Disparar.Enabled = true;
+                    btn_P2Disparar.Enabled = true;
+                    btn_Terminar.Enabled = true;
+                }
+
+            }
             rb_estrategiaCaza.Enabled = false;
             rb_Estrategia_Aleatoria.Enabled = false;
 
@@ -225,12 +240,24 @@ namespace Capa_Presentacion
         {
             Random rnd = new Random();
             int[] disparo = new int[2];
-            disparo = estraA_P1.disparar(rnd);
+            if (rb_Estrategia_Aleatoria.Checked)
+            {
+                disparo = estraA_P1.disparar(rnd);
+            }
+            else
+            {
+                disparo = estraB_P1.disparar(rnd);
+            }
+            
 
             if (this.ActualizarGrilla(1, disparo))
             {
                 Player1DisparosExitosos++;
                 monte_P1.TirosAcertados++;
+                if (rb_estrategiaCaza.Checked)
+                {
+                    estraB_P1.cargarListaTirosPotenciales(disparo);
+                }
                 txtAcertadosP1.Text = monte_P1.TirosAcertados.ToString();
                 btn_P1Disparar.Enabled = true;
                 btn_P2Disparar.Enabled = false;
@@ -272,8 +299,20 @@ namespace Capa_Presentacion
                     btn_P2Disparar.Enabled = true;
                     btn_Terminar.Enabled = true;
                 }
+                
             }
-            
+            else
+            {
+                estraB_P2.recibirVector(vector1);
+                btnP2SelectEstrategia.Enabled = false;
+                if (btnP1SelectEstrategia.Enabled == false)
+                {
+                    btn_P1Disparar.Enabled = true;
+                    btn_P2Disparar.Enabled = true;
+                    btn_Terminar.Enabled = true;
+                }
+            }
+
             rb_EstrategiaAleatoria2.Enabled = false;
             rb_EstrategiaCaza2.Enabled = false;
         }
@@ -282,12 +321,24 @@ namespace Capa_Presentacion
         {
             Random rnd = new Random();
             int[] disparo = new int[2];
-            disparo = estraA_P2.disparar(rnd);
+            if (rb_EstrategiaAleatoria2.Checked)
+            {
+                disparo = estraA_P2.disparar(rnd);
+            }
+            else
+            {
+                disparo = estraB_P2.disparar(rnd);
+            }
+            
 
             if (this.ActualizarGrilla(2, disparo))
             {
                 Player2DisparosExitosos++;
                 monte_P2.TirosAcertados++;
+                if (rb_EstrategiaCaza2.Checked)
+                {
+                    estraB_P2.cargarListaTirosPotenciales(disparo);
+                }
                 txtAcertadosP2.Text = monte_P2.TirosAcertados.ToString();
                 btn_P1Disparar.Enabled = false;
                 btn_P2Disparar.Enabled = true;
@@ -353,10 +404,12 @@ namespace Capa_Presentacion
             ganador = false;
             estraA_P1 = new EstrategiaA();
             estraA_P2 = new EstrategiaA();
-            nfilas = 25;
+            estraB_P1 = new EstrategiaB();
+            estraB_P2 = new EstrategiaB();
+            nfilas = 30;
             ncolumnas = 30;
-            vector1 = new int[25, 30];
-            vector2 = new int[25, 30];
+            vector1 = new int[nfilas, ncolumnas];
+            vector2 = new int[nfilas, ncolumnas];
             dataGridView_Tablero_1.Rows.Clear();
             dataGridView_Tablero_1.Columns.Clear();
             dataGridView_Tablero_1.Refresh();

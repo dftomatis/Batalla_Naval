@@ -16,8 +16,8 @@ namespace Capa_Negocio
         int[,] vector2;
         EstrategiaA estraA_P1;
         EstrategiaA estraA_P2;
-        Montecarlo monte_P1;
-        Montecarlo monte_P2;
+        Montecarlo sim_monte_P1=new Montecarlo();
+        Montecarlo sim_monte_P2= new Montecarlo();
         Barco b;
         Tablero t;
         Boolean partido = true;
@@ -47,6 +47,8 @@ namespace Capa_Negocio
         {
             for (int i = 0; i < 1000; i++)
             {
+                sim_monte_P1.ResultadoPartidaActual = 0;
+                sim_monte_P2.ResultadoPartidaActual = 0;
                 disparosOK1 = 0;
                 disparosOK2 = 0;
                 turnoP1 = true;
@@ -83,9 +85,10 @@ namespace Capa_Negocio
                         }
                     }
                 }
-
+                CalcularMontecarlo();
 
             }
+            
         }
 
         private void Disparar(int jugador)
@@ -119,11 +122,11 @@ namespace Capa_Negocio
                 }
                 else
                 {
-                    player1Intentos++;
+                    sim_monte_P1.TotalTiros++;
                     if (vector2[disparo[0], disparo[1]] > 1 && vector2[disparo[0], disparo[1]] < 7)
                     {
                         turnoP1 = true;
-                        player1DisparosExitosos++;
+                        sim_monte_P1.TirosAcertados++;
                         disparosOK1++;
                         
                     }
@@ -131,7 +134,7 @@ namespace Capa_Negocio
                     {
                         turnoP1 = false;
                         turnoP2 = true;
-                        player1DisparosFallados++;
+                        sim_monte_P1.TirosFallados++;
                     }
 
                 }
@@ -148,31 +151,61 @@ namespace Capa_Negocio
                 }
                 else
                 {
-                    player2Intentos++;
+                    sim_monte_P2.TotalTiros++;
                     if (vector1[disparo[0], disparo[1]] > 1 && vector1[disparo[0], disparo[1]] < 7)
                     {
                         turnoP2 = true;
-                        player2DisparosExitosos++;
+                        sim_monte_P2.TirosAcertados++;
                         disparosOK2++;
                     }
                     else
                     {
                         turnoP2 = false;
                         turnoP1 = true;
-                        player2DisparosFallados++;
+                        sim_monte_P2.TirosFallados++;
                     }
 
                 }
                 
             }
-            if (disparosOK1 == 40 || disparosOK2 == 40)
+            if (disparosOK1 == 40)
             {
-                
+                sim_monte_P1.PartidasGanadas++;
+                sim_monte_P1.ResultadoPartidaActual = 1;
                 turnoP2 = false;
                 turnoP1 = false;
                 partido = false;
             }
+            else
+            {
+                if (disparosOK2 == 40)
+                {
+                    sim_monte_P2.PartidasGanadas++;
+                    sim_monte_P2.ResultadoPartidaActual = 1;
+                    turnoP2 = false;
+                    turnoP1 = false;
+                    partido = false;
+                }
+            }
            
+        }
+
+
+
+        private void CalcularMontecarlo()
+        {
+            sim_monte_P1.NumeroPartidas++;
+            sim_monte_P2.NumeroPartidas++;
+            sim_monte_P1.PartidasPerdidas = sim_monte_P1.NumeroPartidas - sim_monte_P1.PartidasGanadas;
+            sim_monte_P2.PartidasPerdidas = sim_monte_P2.NumeroPartidas - sim_monte_P2.PartidasGanadas;
+            efectividadTiros_p1 = sim_monte_P1.calcularEfectividadTiros();
+            efectividadTiros_p2 = sim_monte_P2.calcularEfectividadTiros();
+            efectividadMediaTiros_p1 = sim_monte_P1.calcularEfectividadMediaTiros();
+            efectividadMediaTiros_p2 = sim_monte_P2.calcularEfectividadMediaTiros();
+            efectividadMediaPartidas_p1 = sim_monte_P1.calcularEfectividadMediaPartidas();
+            efectividadMediaPartidas_p2 = sim_monte_P2.calcularEfectividadMediaPartidas();
+            
+
         }
 
     }

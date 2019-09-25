@@ -60,7 +60,7 @@ namespace Capa_Negocio
             return disparo;
 
         }
-        public void calcularIntentos(int[] disparo)
+      /*  public void calcularIntentos(int[] disparo)
         {
 
             if (tableroControl[disparo[0], disparo[1]] > 1 && tableroControl[disparo[0], disparo[1]] < 7)
@@ -73,7 +73,7 @@ namespace Capa_Negocio
                 disparosFallados += 1;
             }
             intentos++;
-        }
+        }*/
 
     }
 }
