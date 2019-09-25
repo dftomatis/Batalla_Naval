@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Negocio;
+using System.Threading;
 
 namespace Capa_Presentacion
 {
     public partial class Form_Tablero : Form
     {
-
+        public int progress;
         int nfilas;
         int ncolumnas;
         int[,] vector1;
@@ -49,7 +50,8 @@ namespace Capa_Presentacion
         float mediaAcertados_P2;
         float mediaFallados_P1;
         float mediaFallados_P2;
-
+        BackgroundWorker bg = new BackgroundWorker();
+        Simulacion s = new Simulacion();
 
 
 
@@ -413,7 +415,7 @@ namespace Capa_Presentacion
 
         private void Btn_NuevaPartida_Click(object sender, EventArgs e)
         {
-            Player1DisparosExitosos = 0;
+            //Player1DisparosExitosos = 0;
             Player1DisparosFallados = 0;
             Player1Intentos = 0;
             Player2DisparosExitosos = 0;
@@ -550,16 +552,76 @@ namespace Capa_Presentacion
 
         private void BtnSimular_Click(object sender, EventArgs e)
         {
-            Simulacion s = new Simulacion();
-            s.simular();
+            
+            
+            bg.WorkerReportsProgress = true;
+            bg.ProgressChanged += bg_ProgressChanged;
+            bg.DoWork += bg_DoWork;
+            bg.RunWorkerCompleted += bg_RunWorkerCompleted;
+            bg.RunWorkerAsync();
+            labelProgreso.Visible = true;
+            progressBar1.Visible = true;
+            btnSimular.Enabled = false;
+            
+
+        }
+
+
+        private void bg_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int progreso = 0, porciento = 0;
+
+            for (int indice = 0; indice < 1000; indice++) //Ciclo que representa la cantidad de simulaciones a realizar
+            {
+                s.simular();
+
+                progreso++; //Aumentando el progreso 
+                porciento = Convert.ToInt16((double)progreso /(double)(10)); //Calculo del porcentaje
+                //System.Threading.Thread.Sleep(500);
+                bg.ReportProgress(porciento);
+            }
+
+        }
+
+
+
+        private void bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+            progressBar1.Value = e.ProgressPercentage;
+            progressBar1.Step = 1;
+            progressBar1.Style = ProgressBarStyle.Continuous;
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = 100;
+
+            if (e.ProgressPercentage > 100)
+            {
+                labelProgreso.Text = "100%";
+                progressBar1.Value = progressBar1.Maximum;
+            }
+            else
+            {
+                labelProgreso.Text = Convert.ToString(e.ProgressPercentage) + "%";
+                progressBar1.Value = e.ProgressPercentage;
+            }
+        }
+
+
+        private void bg_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
+            labelProgreso.Visible = false;
+            progressBar1.Visible = false;
+            btnSimular.Enabled = true;
             string resultado;
+            s.DevolverGanador();
             if (s.ganador == 0)
             {
                 resultado = "Empate";
             }
             else
             {
-                if(s.ganador==1)
+                if (s.ganador == 1)
                 {
                     resultado = "Ganó el Jugador 1";
                 }
@@ -575,11 +637,11 @@ namespace Capa_Presentacion
                 "\n" + "Estadisticas Jugador 1" +
                 "\n" + "Partidas Ganadas: " + s.sim_monte_P1.PartidasGanadas +
                 "\n" + "Partidas Perdidas: " + s.sim_monte_P1.PartidasPerdidas +
-                "\n" + "Promedio Partidas Ganadas: " + s.sim_monte_P1.EfectividadMediaPartidas+
-                "\n" + "Promedio Tiros por Partida: " + s.sim_monte_P1.MediaTirosTotal+
-                "\n" + "Promedio Tiros Acertados por Partida: " + s.sim_monte_P1.MediaTirosAcertados+
-                "\n" + "Promedio Tiros Fallados por Partida: " + s.sim_monte_P1.MediaTirosFallados+
-                "\n" + "Promedio Efectividad: " + s.sim_monte_P1.EfectividadMediaPartidas+"%"+
+                "\n" + "Promedio Partidas Ganadas: " + s.sim_monte_P1.EfectividadMediaPartidas +
+                "\n" + "Promedio Tiros por Partida: " + s.sim_monte_P1.MediaTirosTotal +
+                "\n" + "Promedio Tiros Acertados por Partida: " + s.sim_monte_P1.MediaTirosAcertados +
+                "\n" + "Promedio Tiros Fallados por Partida: " + s.sim_monte_P1.MediaTirosFallados +
+                "\n" + "Promedio Efectividad: " + s.sim_monte_P1.EfectividadMediaPartidas + "%" +
                 "\n" + "Estadisticas Jugador 2" +
                 "\n" + "Partidas Ganadas: " + s.sim_monte_P2.PartidasGanadas +
                 "\n" + "Partidas Perdidas: " + s.sim_monte_P2.PartidasPerdidas +
@@ -588,9 +650,13 @@ namespace Capa_Presentacion
                 "\n" + "Promedio Tiros Acertados por Partida: " + s.sim_monte_P2.MediaTirosAcertados +
                 "\n" + "Promedio Tiros Fallados por Partida: " + s.sim_monte_P2.MediaTirosFallados +
                 "\n" + "Promedio Efectividad: " + s.sim_monte_P2.EfectividadMediaPartidas + "%" + "\n",
-                "Resultado de Simulacion Automática") ;
-
+                "Resultado de Simulacion Automática");
         }
+
+
+
+
+
 
         private void Label16_Click_1(object sender, EventArgs e)
         {

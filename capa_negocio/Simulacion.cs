@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Capa_Negocio
 {
     public class Simulacion
     {
 
-
+        public int progress;
         int filas=100;
         int columnas=100;
         int[,] vector1;
@@ -37,8 +38,8 @@ namespace Capa_Negocio
 
         public void simular()
         {
-            for (int i = 0; i < 1000; i++)
-            {
+            
+                
                 sim_monte_P1.ResultadoPartidaActual = 0;
                 sim_monte_P2.ResultadoPartidaActual = 0;
                 sim_monte_P1.TotalTiros = 0;
@@ -85,7 +86,14 @@ namespace Capa_Negocio
                 }
                 
 
-            }
+            
+            
+            
+        }
+
+
+        public void DevolverGanador()
+        {
             if (sim_monte_P1.PartidasGanadas == sim_monte_P2.PartidasGanadas)
             {
                 ganador = 0;
